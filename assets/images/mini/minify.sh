@@ -1,1 +1,2 @@
-mogrify -path . -resize 240x135 -background white -gravity center -extent 240x135 *.jpg
+mogrify -path . -resize 480x270 -background white -gravity center -extent 480x270 *.jpg
+mogrify -path . -resize 400x300 -background white -gravity center -extent 400x300 *.png

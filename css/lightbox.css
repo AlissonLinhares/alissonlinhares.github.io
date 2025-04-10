@@ -1,14 +1,16 @@
 .lightbox {
     display: flex;
-    gap: 10px;
+    gap: 1px;
     flex-wrap: wrap;
     cursor: pointer;
     text-align: center;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .lightbox img {
-    width: 217px;
+    width: 214px;
     margin-left: auto;
     margin-right: auto;
     height: auto;

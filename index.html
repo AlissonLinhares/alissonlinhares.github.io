@@ -171,19 +171,50 @@
             <div class="entry">
                 <h3>Native Kit: Support for running Native Virtual Machines. <a href="https://github.com/lmcad-unicamp/NativeKit">&lt;code&gt;</a></h3>
                 <ul>
-                    <li>NativeKit is a framework that implements a minimal POSIX interface, allowing users to recompile their Linux user-level applications to run on bare metal (without an operating system). It uses GRUB to bootload an exokernel integrated into the application's static binary, reducing system requirements and improving the performance of binary translators.</li>
-                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly, GRUB</span></li>
+                    <li>NativeKit is a framework that implements a minimal POSIX interface, allowing developers to recompile their Linux user-level applications to run on bare metal (without an operating system). It uses GRUB to bootload an exokernel <a href="https://github.com/lmcad-unicamp/NativeKit/blob/master/doc/apresentacao.pdf">integrated into the application's static binary</a>, reducing system requirements and improving the performance of binary translators.</li>
+                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly x86/AMD64, GRUB, POSIX, Drivers, Kernel development</span></li>
                 </ul>
+
+                <div class="lightbox">
+                    <iframe width=300 height=200
+                        src="https://www.youtube.com/embed/jj--cF3suvU"
+                        title="NativeKit running a NES emulator without an Operating System"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                    <img src="assets/images/mini/nativekit0.jpg" alt="Interface 1" title="NativeKit is an exokernel embedded in the application code, allowing a binary to execute on bare metal without an operating system.">
+                    <img src="assets/images/mini/nativekit1.jpg" alt="Interface 2" title="The API is fully object-oriented. In this example, I built a kernel with UART support to run an 8086 emulator. The image on the right shows FreeDOS running on tiny8086 emulator, operating on bare metal using the NativeKit API.">
+                </div>
             </div>
 
             <div class="entry">
                 <h3>Neutrino OS: an original Operating System design. <a href="https://github.com/AlissonLinhares/NeutrinoOS">&lt;code&gt;</a></h3>
                 <ul>
                     <li>Neutrino OS is a fully capable operating system developed in x86 assembly. I built everything from scratch using old 486DX manuals as references. I designed the entire software stack for this project, including the bootloader, firmware, shell, graphical interface, applications, filesystem, preemptive scheduler, memory management, event subsystem, APIs, threads, and several drivers for 2D/3D accelerated video, hard drives (PATA/SATA), CD-ROM (PATAPI), keyboard, and mouse.</li>
-                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly</span></li>
+                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly x86, Drivers, Kernel development</span></li>
+                </ul>
+                <div class="lightbox">
+                    <img src="assets/images/mini/neutrino0.png" alt="Interface 1" title="NeutrinoOS has a graphical interface. I have designed a VESA drivers compatible with several video cards.">
+                    <img src="assets/images/mini/neutrino1.png" alt="Interface 2" title="The shell includes a terminal that allows interaction with the file system, enabling users to load applications and navigate through directories.">
+                    <img src="assets/images/mini/neutrino2.png" alt="Interface 3" title="The operating system supports time-sharing, efficient memory allocation, and protected addressing.">
+                    <img src="assets/images/mini/neutrino3.png" alt="Interface 4" title="It is a toy project, but it provides a full syscall interface and event-oriented APIs for development.">
+                </div>
+            </div>
+            <div class="entry">
+                <h3>Nesemu<a href="https://github.com/AlissonLinhares/nesemu">&lt;code&gt;</a></h3>
+                <ul>
+                    <li>Nesemu is a minimal NES emulator designed to teach students the decode-and-dispatch technique and general device emulation. This project is the result of a course I taught at Unicamp during my PhD, in which students successfully developed emulators and highly creative NES games. The course was well received and led to several outstanding derivative projects. This repository includes a reference implementation of the Ricoh 2A03 processor, which I created to assist students during the course. For more information, see the supporting material: <a href="https://raw.githubusercontent.com/AlissonLinhares/nesemu/master/doc/IntroductionToTheNESHardware.pdf">Introduction To The NES Hardware</a></li>
+                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly x86, Emulator</span></li>
                 </ul>
             </div>
-
+            <div class="entry">
+                <h3>ARMX<a href="https://github.com/AlissonLinhares/armx">&lt;code&gt;</a></h3>
+                <ul>
+                    <li>armx is a basic ARMv7 emulator used to test several ideas related to multi architecture binary translation. The emulator is capable of running ARM code on a Linux machine, as well as generating RISC-V translation traces. It is compatible with POSIX standard.</li>
+                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C++, ARMv7, RISC-V, POSIX, Emulator</span></li>
+                </ul>
+            </div>
         </section>
 
         <section>
