@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Resume - Alisson Linhares" />
     <title>Alisson Linhares - Resume</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -23,7 +24,18 @@
 
         <section>
             <h2>About me</h2>
-            <p>I am a computer scientist with a solid background in Bare Metal Programming, Linux, Computer Graphics, Generative AI, Hardware Emulation, Compilers, and Game Development. I have worked for several leading companies, including <strong>IBM</strong>, <strong>Dell Technologies</strong>, and <strong>PUC-Campinas</strong>. In addition, I have proven experience in developing highly sophisticated applications, including operating system components such as drivers, schedulers, graphical interfaces, bootloaders, game engines, and firmware. I also have academic teaching experience and have led and overseen several research and development projects throughout my career.</p>
+            <p>I am a computer scientist with a solid background in bare-metal programming, Linux, computer graphics, generative AI, hardware emulation, compilers, and game development. I have worked for several leading companies, including <strong>IBM</strong>, <strong>Dell Technologies</strong>, and <strong>PUC-Campinas</strong>. In addition, I have proven experience developing highly sophisticated applications, including operating system components such as drivers, schedulers, graphical interfaces, bootloaders, game engines, and firmware. I also have academic teaching experience and have led and overseen several research and development projects throughout my career.
+        </section>
+
+        <section>
+            <h2>Career Timeline </h2>
+            <p>This is my career timeline. Put the mouse over each branch to see what happened during that period.</p>
+            <div class="timeline-chart-container" id="chart-wrapper">
+                <div class="timeline-chart-card" id="chart-container">
+                <svg id="branch-chart" viewBox="0 0 900 250" preserveAspectRatio="xMinYMid meet"></svg>
+                <div id="tooltip" class="timeline-chart-tooltip" style="display: none;"></div>
+                </div>
+            </div>
         </section>
 
         <section>
@@ -32,7 +44,7 @@
                 <h3>PhD candidate, Computer Systems <span>2017 - Paused</span></h3>
                 <p class="org">UNICAMP - University of Campinas, Campinas, Brazil</p>
                 <ul>
-                    <li><a href="/assets/carvalho2009.pdf">Thesis: Transprecision Polymorphic FPU for Mixed-Precision Computing</a></li>
+                    <li><a href="/assets/carvalho2019.pdf">Thesis: Transprecision Polymorphic FPU for Mixed-Precision Computing</a></li>
                     <li>CAPES Scholarship; all credit requirements completed</li>
                 </ul>
             </div>
@@ -132,8 +144,9 @@
                     <li>Data Structures and Algorithms Instructor, UNIT/SE</li>
                     <li>Technical Support Specialist, TRT/SE</li>
                     <li><a href="http://laboratoriogames.wordpress.com/">Student Game Developer, LDG/SE</a></li>
-                    <li>Electronic Technician, CEFET/SE</li>
                     <li><a href="https://www.hackerrank.com/profile/arescarv">Certified Developer, HackerRank</a></li>
+                    <li>Electronic Technician, CEFET/SE</li>
+                    <li>Advanced English, Fisk/Campinas</li>
                 </ul>
             </div>
         </section>
@@ -186,6 +199,7 @@
             <p>I am a developer with more than 12 years of experience designing applications for various computer architectures and operating systems, including Android, iOS, macOS, Windows and Linux. Unlike most developers, my practical skills are not confined to a specific layer of the computing stack. I am curious, self-taught and capable of working across the entire system - from CPU design, firmware, and operating systems to compilers and higher-level software, such as VR/AR games, 3D physics simulations, responsive websites, and AI-driven applications. Given my expertise and generalist background, I am seeking a Systems Engineer position where my skills can be fully utilized and challenged.</p>
         </section>
     </div>
-</body>
 
+    <script src="js/timeline.js"></script>
+</body>
 </html>

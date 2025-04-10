@@ -8,8 +8,11 @@ body {
 
 a {
     color: #704214;
-    /* Sepia tone */
     text-decoration: none;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 0, 0.15); /* Transparent yellow */
 }
 
 .container {

@@ -1,0 +1,32 @@
+.timeline-chart-container {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.timeline-chart-card {
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    position: relative;
+}
+
+.timeline-chart-tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+}
