@@ -1,123 +1,141 @@
-
 const svg = document.getElementById("branch-chart");
 const tooltip = document.getElementById("tooltip");
 const container = document.getElementById("chart-container");
+const branches = [];
 
-branches = [];
+function addPoint(start, end, desc, line_color, startYear, endYear, level = 0) {
+    const baseY = 50;
+    const verticalOffset = 10;
+    const curveSpread = 0.01;
 
-function add_point(start, end, description, link, color, start_year, end_year, level=0) {
-    const min_y = 50
-    const max_y = min_y - 10*level;
-    const dist = 0.01;
+    const scale = end - start;
+    const minX = (startYear - start) / scale;
+    const maxX = (endYear - start) / scale;
+    const minY = baseY;
+    const maxY = baseY - verticalOffset * level;
 
-    scale = end - start;
-    min_x = (start_year - start) / scale;
-    max_x = (end_year - start) / scale;
-    path = [[min_x, min_y], [min_x + dist, max_y],  [max_x - dist, max_y], [max_x, min_y]];
+    const final_path = [
+        [minX, minY],
+        [minX + curveSpread, maxY],
+        [maxX - curveSpread, maxY],
+        [maxX, minY],
+    ];
 
-    branches.push({ year: start_year, description: description, link: link, color: color, path: path });
+    branches.push({ year: startYear, description: desc, color: line_color, path: final_path });
+}
+
+function createSVGElement(type, attributes) {
+    const el = document.createElementNS("http://www.w3.org/2000/svg", type);
+    for (const [key, value] of Object.entries(attributes)) {
+        el.setAttribute(key, value);
+    }
+    return el;
 }
 
 function renderChart() {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-    const svgRect = svg.getBoundingClientRect();
-    const width = svgRect.width;
-    const height = 250;
+    const { width } = svg.getBoundingClientRect();
+    const baselineY = 100;
+    const labelY = 200;
 
-    branches.forEach((branch, index) => {
-        const d = branch.path.map((point, i) => {
-            const x = point[0] * width;
-            const y = 100 + point[1];
-            return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+    branches.forEach(branch => {
+        const pathData = branch.path.map(([x, y], i) => {
+            return `${i === 0 ? "M" : "L"} ${x * width} ${baselineY + y}`;
         }).join(" ");
 
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", d);
-        path.setAttribute("stroke", branch.color);
-        path.setAttribute("stroke-width", "3");
-        path.setAttribute("fill", "none");
-        path.setAttribute("stroke-linecap", "round");
-        path.style.cursor = "pointer";
+        const drawPath = createSVGElement("path", {
+            d: pathData,
+            stroke: branch.color,
+            "stroke-width": 3,
+            fill: "none",
+            "stroke-linecap": "round"
+        });
+        drawPath.style.cursor = "pointer";
 
-        const [startX, startY] = branch.path[0];
-        const [endX, endY] = branch.path[branch.path.length - 1];
+        const [[startX, startY], , , [endX, endY]] = branch.path;
 
-        const startDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        startDot.setAttribute("cx", startX * width);
-        startDot.setAttribute("cy", 100 + startY);
-        startDot.setAttribute("r", 5);
-        startDot.setAttribute("fill", branch.color);
+        const startDot = createSVGElement("circle", {
+            cx: startX * width,
+            cy: baselineY + startY,
+            r: 5,
+            fill: branch.color
+        });
 
-        const endDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        endDot.setAttribute("cx", endX * width);
-        endDot.setAttribute("cy", 100 + endY);
-        endDot.setAttribute("r", 5);
-        endDot.setAttribute("fill", branch.color);
+        const endDot = createSVGElement("circle", {
+            cx: endX * width,
+            cy: baselineY + endY,
+            r: 5,
+            fill: branch.color
+        });
 
         const handleMouseEnter = (e) => {
-            tooltip.textContent = branch.description;
+            tooltip.innerHTML = branch.description;
             const containerRect = container.getBoundingClientRect();
-            tooltip.style.left = `${e.clientX - containerRect.left}px`;
-            tooltip.style.top = `${e.clientY - containerRect.top}px`;
+            tooltip.style.left = `${e.clientX - containerRect.left + 10}px`;
+            tooltip.style.top = `${e.clientY - containerRect.top - 20}px`;
             tooltip.style.display = "block";
-            path.setAttribute("stroke", "#ffff00");
+
+            drawPath.setAttribute("stroke", "#ffff00");
             startDot.setAttribute("fill", "#ffff00");
             endDot.setAttribute("fill", "#ffff00");
         };
 
         const handleMouseLeave = () => {
             tooltip.style.display = "none";
-            path.setAttribute("stroke", branch.color);
+            drawPath.setAttribute("stroke", branch.color);
             startDot.setAttribute("fill", branch.color);
             endDot.setAttribute("fill", branch.color);
         };
 
-        const hitPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        hitPath.setAttribute("d", d);
-        hitPath.setAttribute("stroke", "transparent");
-        hitPath.setAttribute("stroke-width", "15");
-        hitPath.setAttribute("fill", "none");
-        hitPath.style.cursor = "pointer";
-        hitPath.addEventListener("mouseenter", handleMouseEnter);
-        hitPath.addEventListener("mouseleave", handleMouseLeave);
-        hitPath.addEventListener("click", () => window.open(branch.link, "_blank"));
+        const interactivePath = createSVGElement("path", {
+            d: pathData,
+            stroke: "transparent",
+            "stroke-width": 15,
+            fill: "none"
+        });
+        interactivePath.style.cursor = "pointer";
+        interactivePath.addEventListener("mouseenter", handleMouseEnter);
+        interactivePath.addEventListener("mouseleave", handleMouseLeave);
+        interactivePath.addEventListener("click", () => window.open(branch.link, "_blank"));
+        interactivePath.setAttribute("pointer-events", "stroke");
 
-        [startDot, endDot].forEach(el => {
-            el.addEventListener("mouseenter", handleMouseEnter);
-            el.addEventListener("mouseleave", handleMouseLeave);
-            el.addEventListener("click", () => window.open(branch.link, "_blank"));
+        [startDot, endDot].forEach(dot => {
+            dot.addEventListener("mouseenter", handleMouseEnter);
+            dot.addEventListener("mouseleave", handleMouseLeave);
+            dot.addEventListener("click", () => window.open(branch.link, "_blank"));
         });
 
-        svg.appendChild(path);
-        svg.appendChild(hitPath);
+        svg.appendChild(drawPath);
+        svg.appendChild(interactivePath);
         svg.appendChild(startDot);
         svg.appendChild(endDot);
 
-        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        label.setAttribute("x", startX * width);
-        label.setAttribute("y", 200);
-        label.setAttribute("transform", `rotate(-90 ${startX * width} 200)`);
+        const label = createSVGElement("text", {
+            x: startX * width,
+            y: labelY,
+            transform: `rotate(-90 ${startX * width} ${labelY})`,
+        });
         label.textContent = branch.year;
         svg.appendChild(label);
     });
 }
 
-
-add_point(2005, 2026, "My career", "https://example.com/2020", "#000000", 2005, 2026);
-add_point(2005, 2026, "CEFET/SE, Technical education, electronics", "https://example.com/2020", "#964B00", 2007, 2009, -2);
-add_point(2005, 2026, "Lumen Games/SE", "https://example.com/2020", "#404040", 2009, 2011, -2);
-add_point(2005, 2026, "Unit/SE, Bachelor's degree, Computer Science", "https://example.com/2020", "#964B00", 2007, 2011, 2);
-add_point(2005, 2026, "UFS/SE, Undergraduate Professor (Full Time)", "https://example.com/2020", "#404040", 2011, 2013, 2);
-add_point(2005, 2026, "Unicamp/SP, Master's degree, Computer Science", "https://example.com/2020", "#964B00", 2013, 2015, 2);
-add_point(2005, 2026, "IBM/SP, Linux Technology Center<br>Linux Software Engineer (Hybrid)", "https://example.com/2020", "#808080", 2015, 2017, 2);
-add_point(2005, 2026, "Unicmap/SP, Phd, Computer Science", "https://example.com/2020", "#964B00", 2017, 2020, 2);
-add_point(2005, 2026, "IdeaIP/SP, Computer Architecture Research (Part Time)", "https://example.com/2020", "#808080", 2019, 2020, 4);
-add_point(2005, 2026, "PUC/SP, Undergraduate Professor - Full Time", "https://example.com/2020", "#404040", 2021, 2022, 2);
-add_point(2005, 2026, "AXNTEK/SE", "https://example.com/2020", "#808080", 2020, 2022, 4);
-add_point(2005, 2026, "DELL Technologies/SP, Software Engineer", "https://example.com/2020", "#808080", 2022, 2025, 2);
-add_point(2005, 2026, "Covid, Lockdown - searching for new purpose in life! :(", "https://example.com/2020", "#FF0000", 2019, 2022, -6);
-add_point(2005, 2026, "Today", "https://example.com/2020", "#000000", 2025, 2026, 0);
+// Add your data points
+addPoint(2005, 2026, "My career", "#000000", 2005, 2026);
+addPoint(2005, 2026, "CEFET, Sergipe, Brazil<br>Technical education, electronics", "#964B00", 2007, 2009, -2);
+addPoint(2005, 2026, "Lumen Games, Sergipe, Brazil<br>Game Developer", "#808080", 2009, 2011, -2);
+addPoint(2005, 2026, "University Tirandentes (UNIT), Sergipe, Brazil<br>Bachelor's degree, Computer Science", "#964B00", 2007, 2011, 2);
+addPoint(2005, 2026, "Universidade Federal de Sergipe (UFS)<br>Sergipe, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2011, 2013, 2);
+addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>Master's degree, Computer Science", "#964B00", 2013, 2015, 2);
+addPoint(2005, 2026, "IBM, São Paulo, Brazil<br>Linux Technology Center<br>Linux Software Engineer (Hybrid)", "#808080", 2015, 2017, 2);
+addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>PhD, Computer Science<br>All credit requirements completed", "#964B00", 2017, 2020, 2);
+addPoint(2005, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Research (Part Time)", "#808080", 2019, 2020, 4);
+addPoint(2005, 2026, "Pontifícia Universidade Católica (PUC)<br>São Paulo, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2021, 2022, 2);
+addPoint(2005, 2026, "AXNTEK, Sergipe, Brazil<br>Lead Game Programmer", "#808080", 2020, 2022, 4);
+addPoint(2005, 2026, "DELL Technologies, São Paulo, Brazil<br>Senior Engineer", "#808080", 2022, 2025, 2);
+addPoint(2005, 2026, "Covid19, 2020 Lockdown<br>Searching for a new purpose in life! :(", "#FF0000", 2019, 2022, -6);
+addPoint(2005, 2026, "Today", "#000000", 2025, 2026, 0);
 
 renderChart();
 window.addEventListener("resize", renderChart);
