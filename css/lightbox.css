@@ -1,0 +1,43 @@
+.lightbox {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lightbox img {
+    width: 217px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.lightbox img:hover {
+    transform: scale(1.05);
+}
+
+#lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    box-shadow: 0 0 15px #000;
+    border-radius: 6px;
+}
+
+#lightbox-modal:target {
+    display: flex;
+}

@@ -8,6 +8,7 @@
     <title>Alisson Linhares - Resume</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/timeline.css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -41,7 +42,7 @@
         <section>
             <h2>Education</h2>
             <div class="entry">
-                <h3>PhD candidate, Computer Systems <span>2017 - Paused</span></h3>
+                <h3>PhD candidate, Computer Science <span>2017 - Paused</span></h3>
                 <p class="org">UNICAMP - University of Campinas, São Paulo, Brazil</p>
                 <ul>
                     <li><a href="/assets/carvalho2019.pdf">Thesis: Transprecision Polymorphic FPU for Mixed-Precision Computing</a></li>
@@ -50,11 +51,11 @@
             </div>
 
             <div class="entry">
-                <h3>Master's degree, Computer Systems <span>2013 - 2015</span></h3>
+                <h3>Master's degree, Computer Science <span>2013 - 2015</span></h3>
                 <p class="org">UNICAMP - University of Campinas, São Paulo, Brazil</p>
                 <ul>
                     <li>Thesis: <a href="https://github.com/lmcad-unicamp/NativeKit">Native Kit: Support for running Native Virtual Machines</a></li>
-                    <li>FAPESP Scholarship</li>
+                    <li><a href="https://bv.fapesp.br/pt/pesquisador/672377/alisson-linhares-de-carvalho/">FAPESP Scholarship</a></li>
                 </ul>
             </div>
 
@@ -70,7 +71,7 @@
         <section>
             <h2>Experience</h2>
             <div class="entry">
-                <h3>Senior Engineer Technologist <span>Dec 2022 -- Apr 2025</span></h3>
+                <h3>Senior Engineer Technologist <span>Dec 2022 - Apr 2025</span></h3>
                 <p class="org">DELL, São Paulo, Brazil</p>
                 <ul>
                     <li>I worked for the OCTO and AIRI divisions, designing Retrieval-Augmented Generation (RAG) pipelines, a multi-agent orchestrator compatible with modern LLM standards, and enabling advanced content generation using Stable Diffusion and ControlNets. Moreover, I led multiple R&D initiatives related to the implementation of agentic systems and ReAct-based agents with structured output, function calling, and advanced reasoning and planning techniques.</li>
@@ -140,7 +141,7 @@
             <div class="entry">
                 <h2>Other Experiences and Educations</h2>
                 <ul>
-                    <li>Computer Architecture Instructor, Unicamp/SP</li>
+                    <li><a href="https://github.com/AlissonLinhares/nesemu">Computer Architecture Instructor, Unicamp/SP</a></li>
                     <li>Data Structures and Algorithms Instructor, UNIT/SE</li>
                     <li>Technical Support Specialist, TRT/SE</li>
                     <li><a href="http://laboratoriogames.wordpress.com/">Student Game Developer, LDG/SE</a></li>
@@ -157,8 +158,14 @@
                 <h3>SCProf: a SystemC profiling framework to improve hardware utilization <a href="https://github.com/AlissonLinhares/scprof">&lt;code&gt;</a></h3>
                 <ul>
                     <li>SCProf is a SystemC profiler designed from scratch to help engineers analyze DSPs' precision utilization. I developed it as a research project for IdeaIP, a company specializing in DSP design. The profiler operates in real time during hardware simulation, collecting telemetry data similar to the Linux Perf app. Using this framework, the company optimized the fixed-point precision requirements of several internal DSP modules, resulting in a <a href="https://github.com/AlissonLinhares/scprof/blob/master/doc/sbcci_2020.pdf">published paper</a>. </li>
-                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, SystemC, C++, Python</span></li>
+                    <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, SystemC, C++, Python, Flask, RestAPI</span></li>
                 </ul>
+                <div class="lightbox">
+                    <img src="assets/images/mini/scprof0.jpg" alt="Profiler Architecture" title="SCProf overrides all fixed-point operations within the SystemC library. After running a simulation with representative data, you can use the viewer to analyze what happened inside the application. The tool provides tips, explaining what needs to be done to improve bit utilization and reduce hardware requirements. The project was used by IdeaIP to substantially improve their DSP hardware.">
+                    <img src="assets/images/mini/scprof1.jpg" alt="Interface 1" title="">
+                    <img src="assets/images/mini/scprof2.jpg" alt="Interface 2" title="">
+                    <img src="assets/images/mini/scprof3.jpg" alt="Interface 3" title="">
+                </div>
             </div>
 
             <div class="entry">
@@ -201,5 +208,6 @@
     </div>
 
     <script src="js/timeline.js"></script>
+    <script src="js/lightbox.js"></script>
 </body>
 </html>
