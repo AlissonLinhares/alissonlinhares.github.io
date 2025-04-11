@@ -1,19 +1,18 @@
 .lightbox {
     display: flex;
     gap: 1px;
-    flex-wrap: wrap;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
-    margin-right: 20px;
+    max-width: 900px;
+    margin: 0 auto; /* centraliza horizontalmente */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* caso os elementos passem de 800px, eles quebram para a linha de baixo */
 }
 
+.lightbox iframe,
 .lightbox img {
-    width: 214px;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
+    display: block;
+    max-width: 220px;
+    max-height: 200px;
     transition: transform 0.2s;
 }
 
