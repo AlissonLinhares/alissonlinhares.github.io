@@ -4,7 +4,7 @@ const container = document.getElementById("chart-container");
 const branches = [];
 
 function addPoint(start, end, desc, line_color, startYear, endYear, level = 0) {
-    const baseY = 50;
+    const baseY = 30;
     const verticalOffset = 10;
     const curveSpread = 0.01;
 
@@ -20,6 +20,9 @@ function addPoint(start, end, desc, line_color, startYear, endYear, level = 0) {
         [maxX - curveSpread, maxY],
         [maxX, minY],
     ];
+
+    if (startYear != Math.round(startYear))
+        startYear = ""
 
     branches.push({ year: startYear, description: desc, color: line_color, path: final_path });
 }
@@ -38,6 +41,37 @@ function renderChart() {
     const { width } = svg.getBoundingClientRect();
     const baselineY = 100;
     const labelY = 200;
+
+    // Add legend above the chart
+    const legendY = 20; // Position above the chart
+    const legendItems = [
+        { color: "#964B00", text: "Education" },
+        { color: "#404040", text: "Academic Work" },
+        { color: "#808080", text: "Industry work" }
+    ];
+
+    legendItems.forEach((item, index) => {
+        const legendX = width * 0.1 + index * (width * 0.25);
+        
+        // Add colored circle
+        const circle = createSVGElement("circle", {
+            cx: legendX,
+            cy: legendY,
+            r: 5,
+            fill: item.color
+        });
+        svg.appendChild(circle);
+
+        // Add text
+        const text = createSVGElement("text", {
+            x: legendX + 10,
+            y: legendY + 5,
+            "font-size": "12px",
+            fill: "currentColor"
+        });
+        text.textContent = item.text;
+        svg.appendChild(text);
+    });
 
     branches.forEach(branch => {
         const pathData = branch.path.map(([x, y], i) => {
@@ -123,14 +157,15 @@ function renderChart() {
 
 // Add your data points
 addPoint(2005, 2026, "My career", "#000000", 2005, 2026);
+addPoint(2005, 2026, "LDG, Sergipe, Brazil<br>Game Programing Research (Part Time)", "#404040", 2008.5, 2009, 4);
 addPoint(2005, 2026, "CEFET, Sergipe, Brazil<br>Technical education, electronics", "#964B00", 2007, 2009, -2);
 addPoint(2005, 2026, "Lumen Games, Sergipe, Brazil<br>Game Developer", "#808080", 2009, 2011, -2);
 addPoint(2005, 2026, "University Tirandentes (UNIT), Sergipe, Brazil<br>Bachelor's degree, Computer Science", "#964B00", 2007, 2011, 2);
 addPoint(2005, 2026, "Universidade Federal de Sergipe (UFS)<br>Sergipe, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2011, 2013, 2);
 addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>Master's degree, Computer Science", "#964B00", 2013, 2015, 2);
 addPoint(2005, 2026, "IBM, São Paulo, Brazil<br>Linux Technology Center<br>Linux Software Engineer (Hybrid)", "#808080", 2015, 2017, 2);
-addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>PhD, Computer Science<br>All credit requirements completed", "#964B00", 2017, 2020, 2);
-addPoint(2005, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Research (Part Time)", "#808080", 2019, 2020, 4);
+addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>PhD, Computer Science<br>(Paused) All credit requirements completed", "#964B00", 2017, 2020, 2);
+addPoint(2005, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Research (Part Time)", "#404040", 2019, 2020, 4);
 addPoint(2005, 2026, "Pontifícia Universidade Católica (PUC)<br>São Paulo, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2021, 2022, 2);
 addPoint(2005, 2026, "AXNTEK, Sergipe, Brazil<br>Lead Game Programmer", "#808080", 2020, 2022, 4);
 addPoint(2005, 2026, "DELL Technologies, São Paulo, Brazil<br>Senior Engineer", "#808080", 2022, 2025, 2);

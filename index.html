@@ -9,10 +9,21 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/timeline.css" />
     <link rel="stylesheet" href="css/lightbox.css" />
+    <link rel="stylesheet" href="css/navmenu.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
         <header class="center">
             <h1>Alisson Linhares</h1>
@@ -23,14 +34,14 @@
             </div>
         </header>
 
-        <section>
+        <section id="about">
             <h2>About me</h2>
             <p>I am a computer scientist with a solid background in bare-metal programming, Linux, computer graphics, generative AI, hardware emulation, compilers, and game development. I have worked for several leading companies, including <strong>IBM</strong>, <strong>Dell Technologies</strong>, and <strong>PUC-Campinas</strong>. In addition, I have proven experience developing highly sophisticated applications, including operating system components such as drivers, schedulers, graphical interfaces, bootloaders, game engines, and firmware. I also have academic teaching experience and have led and overseen several research and development projects throughout my career.
         </section>
 
-        <section>
-            <h2>Career Timeline </h2>
-            <p>This is my career timeline. Put the mouse over each branch to see what happened during that period.</p>
+        <section id="timeline">
+            <h2>Career Overview </h2>
+            <p>This is a summary of my career. Put the mouse over each branch to see what happened during that period.</p>
             <div class="timeline-chart-container" id="chart-wrapper">
                 <div class="timeline-chart-card" id="chart-container">
                 <svg id="branch-chart" viewBox="0 0 900 250" preserveAspectRatio="xMinYMid meet"></svg>
@@ -39,7 +50,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="education">
             <h2>Education</h2>
             <div class="entry">
                 <h3>PhD candidate, Computer Science <span>2017 - Paused</span></h3>
@@ -68,7 +79,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="experience">
             <h2>Experience</h2>
             <div class="entry">
                 <h3>Senior Engineer<span>Dec 2022 - Apr 2025</span></h3>
@@ -139,22 +150,7 @@
             </div>
         </section>
 
-        <section>
-            <div class="entry">
-                <h2>Other Experiences and Educations</h2>
-                <ul>
-                    <li><a href="https://github.com/AlissonLinhares/nesemu">Computer Architecture Instructor, Unicamp/SP</a></li>
-                    <li>Data Structures and Algorithms Instructor, UNIT/SE</li>
-                    <li>Technical Support Specialist, TRT/SE</li>
-                    <li><a href="http://laboratoriogames.wordpress.com/">Student Game Developer, LDG/SE</a></li>
-                    <li><a href="https://www.hackerrank.com/profile/arescarv">Certified Developer, HackerRank</a></li>
-                    <li>Electronic Technician, CEFET/SE</li>
-                    <li>Advanced English, Fisk/Campinas</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
+        <section id="projects">
             <h2>Projects</h2>
             <div class="entry">
                 <h3>SCProf: a SystemC profiling framework to improve hardware utilization <a href="https://github.com/AlissonLinhares/scprof">&lt;code&gt;</a></h3>
@@ -178,13 +174,10 @@
                 </ul>
 
                 <div class="lightbox">
-                    <iframe width=300 height=270
-                        src="https://www.youtube.com/embed/jj--cF3suvU"
-                        title="NativeKit running a NES emulator without an Operating System"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
+                    <a href="https://www.youtube.com/embed/jj--cF3suvU" target="_blank" rel="noopener" class="video-thumbnail">
+                        <img width=300 height=270 src="assets/images/full/nativekit2.jpg" title="NativeKit running a NES emulator without an Operating System" alt="Watch on YouTube">
+                        <span class="play-button">&#9658;</span>
+                    </a>
                     <img src="assets/images/mini/nativekit0.jpg" alt="Interface 1" title="NativeKit is an exokernel embedded in the application code, allowing a binary to execute on bare metal without an operating system.">
                     <img src="assets/images/mini/nativekit1.jpg" alt="Interface 2" title="The API is fully object-oriented. In this example, I built a kernel with UART support to run an 8086 emulator. The image on the right shows FreeDOS running on tiny8086 emulator, operating on bare metal using the NativeKit API.">
                 </div>
@@ -230,7 +223,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="skills">
             <h2>Skills</h2>
             <div class="tags">
                 Python, C#, C++, C, JavaScript, TypeScript, Shell Script, SQL, MongoDB, Redis, RISC-V, ARM, AMD64, VHDL, GCC/G++, NASM, AS, Bash/zsh, GDB, perf, HPC, Linux, Embedded Linux, Raspberry Pi, Android, Git, VI/VIM, Cursor, NodeJS, FastAPI, REST API, Express.js, Docker, Podman, Oracle Cloud, MLOps, Ollama, TGI, lit-gpt, LLM, LangChain, OpenAI API, LangGraph, Generative AI, ReAct Agents, Problem Solving, Scrum, Computer Graphics, Unity3D, Newlib, GRUB, Dynamic Binary Translation, Hardware Emulation, KVM, Compilers, Kernel, AI, Backend, Game Development
@@ -253,5 +246,6 @@
 
     <script src="js/timeline.js"></script>
     <script src="js/lightbox.js"></script>
+    <script src="js/scroll-animations.js"></script>
 </body>
 </html>
