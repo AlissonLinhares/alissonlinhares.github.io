@@ -10,15 +10,6 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-color: #fff;
-        --background-color: #1a1a1a;
-        --card-background: rgba(255, 255, 255, 0.05);
-        --shadow-color: rgba(0, 0, 0, 0.3);
-    }
-}
-
 html {
     scroll-behavior: smooth;
 }
