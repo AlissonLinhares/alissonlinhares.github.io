@@ -131,13 +131,11 @@ function renderChart() {
         interactivePath.style.cursor = "pointer";
         interactivePath.addEventListener("mouseenter", handleMouseEnter);
         interactivePath.addEventListener("mouseleave", handleMouseLeave);
-        interactivePath.addEventListener("click", () => window.open(branch.link, "_blank"));
         interactivePath.setAttribute("pointer-events", "stroke");
 
         [startDot, endDot].forEach(dot => {
             dot.addEventListener("mouseenter", handleMouseEnter);
             dot.addEventListener("mouseleave", handleMouseLeave);
-            dot.addEventListener("click", () => window.open(branch.link, "_blank"));
         });
 
         svg.appendChild(drawPath);
