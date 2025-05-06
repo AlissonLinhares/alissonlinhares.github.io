@@ -8,7 +8,7 @@
     <title>Alisson Linhares</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/timeline.css" />
-    <link rel="stylesheet" href="css/lightbox.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
     <link rel="stylesheet" href="css/navmenu.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -21,6 +21,7 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="assets/alisson_linhares.pdf" id="cv_link">[Get My CV]</a></li>
         </ul>
     </nav>
 
@@ -86,7 +87,7 @@
                 <p class="org">DELL, São Paulo, Brazil</p>
                 <ul>
                     <li>I worked for the OCTO and AIRI divisions, designing Retrieval-Augmented Generation (RAG) pipelines, a multi-agent orchestrator compatible with modern LLM standards, and enabling advanced content generation using Stable Diffusion and ControlNets. Moreover, I led multiple R&D initiatives related to the implementation of agentic systems and ReAct-based agents with structured output, function calling, and advanced reasoning and planning techniques.</li>
-                    <li>Among my responsibilities, I can mention the following: I was responsible for interviewing new engineers for the company; I had the opportunity to interact with partners including NVIDIA, DataRobot, Cohere, and DataStax to evaluate platforms to be acquired by Dell Technologies; I coordinated a group of PhD researchers; presented research results to the board; and designed and wrote definitions and materials for leadership. Additionally, I organized Scrum meetings, configured and deployed models on-premises, and assisted new engineers.</li>
+                    <li>Among my responsibilities, I can also mention: I was responsible for interviewing new engineers for the company; I had the opportunity to interact with partners including NVIDIA, DataRobot, Cohere, and DataStax to evaluate platforms to be acquired by Dell Technologies; I coordinated a group of PhD researchers; presented research results to the board; and designed and wrote definitions and materials for leadership. Additionally, I organized Scrum meetings, configured and deployed models on-premises, and assisted new engineers.</li>
                     <li><span class="tech">Relevant Technologies:</span> <span class="tags">LLM Agents, RAG, LangChain,
                             LangGraph, LLM Models, Stable diffusion, Python, Linux, Docker, Scrum, FastAPI, RestAPI,
                             Microservices, TDD, MLOps, Cursor, AI</span></li>
@@ -106,7 +107,8 @@
                 <h3>Lead Programmer / Co-founder <span>Mar 2020 - Feb 2022</span></h3>
                 <p class="org">AXNTEK, São Paulo, Brazil</p>
                 <ul>
-                    <li>AXNTEK was a Brazilian indie game company founded by my brother, a friend, and me. I served as the lead programmer and manager. I developed the entire infrastructure, including the backend, frontend, game APIs, and most of our game mechanics and interfaces. Over the course of two years, we successfully launched <a href="https://axntek.games">three games on both Android and iOS.</a></li>
+                    <li>I was the co-founder, lead programmer, and manager. I developed the entire infrastructure, including the backend, frontend, game APIs, and most of our game mechanics and interfaces. Over two years, we successfully launched <a href="https://axntek.games">three games on both Android and iOS.</a></li>
+                    <li>At AXNTEK, I had the opportunity to develop scalable cloud infrastructure using Oracle Cloud, Podman, Redis, MongoDB, Node.js, Express.js, and Nginx, as well as to create sophisticated game mechanics using C#, Python, and Unity3D.</li>
                     <li>Other projects developed by us: <a href="https://vimeo.com/axntek">axntek games</a></li>
                     <li><span class="tech">Relevant Technologies:</span><span class="tags">Unity3D, Blender3D, C#, Python, Android, iOS, Linux</span></li>
                 </ul>
@@ -116,7 +118,7 @@
                 <h3>Computer Architecture Research <span>Aug 2019 - May 2020</span></h3>
                 <p class="org">Idea IP, São Paulo, Brazil</p>
                 <ul>
-                    </li>Idea!IP was a startup specializing in the development of Digital Signal Processors (DSPs). I worked there in collaboration with Unicamp, optimizing their processor simulation pipeline by parallelizing computations and increasing simulation throughput. I made several contributions to the main DSP project, including developing an open-source tool called SCProf, which helps the engineering team profile precision across various areas of the chip during simulation. This contribution also resulted in a publication: <a href="https://github.com/AlissonLinhares/scprof/blob/master/doc/sbcci_2020.pdf">A SystemC profiling framework to improve fixed-point hardware utilization</a></li>
+                    </li>I worked on optimizing a Digital Signal Processor (DSP) simulation pipeline. Moreover, I made several valuable contributions to the company, including developing an open-source tool called SCProf, which helps the engineering team profile precision across various areas of the chip during simulation. This contribution also resulted in a publication: <a href="https://github.com/AlissonLinhares/scprof/blob/master/doc/sbcci_2020.pdf">A SystemC profiling framework to improve fixed-point hardware utilization</a></li>
                     <li><span class="tech">Relevant Technologies:</span><span class="tags">Python, C, C++, SystemC, Linux, Application profiling, Multithreading</span></li>
                 </ul>
             </div>
@@ -158,11 +160,29 @@
                     <li>SCProf is a SystemC profiler designed from scratch to help engineers analyze DSPs' precision utilization. I developed it as a research project for IdeaIP, a company specializing in DSP design. The profiler operates in real time during hardware simulation, collecting telemetry data similar to the Linux Perf app. Using this framework, the company optimized the fixed-point precision requirements of several internal DSP modules, resulting in a <a href="https://github.com/AlissonLinhares/scprof/blob/master/doc/sbcci_2020.pdf">published paper</a>. </li>
                     <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, SystemC, C++, Python, Flask, RestAPI</span></li>
                 </ul>
-                <div class="lightbox">
-                    <img src="assets/images/mini/scprof0.jpg" alt="Profiler Architecture" title="SCProf overrides all fixed-point operations within the SystemC library. After running a simulation with representative data, you can use the viewer to analyze what happened inside the application. The tool provides tips, explaining what needs to be done to improve bit utilization and reduce hardware requirements. The project was used by IdeaIP to substantially improve their DSP hardware.">
-                    <img src="assets/images/mini/scprof1.jpg" alt="Interface 1" title="">
-                    <img src="assets/images/mini/scprof2.jpg" alt="Interface 2" title="">
-                    <img src="assets/images/mini/scprof3.jpg" alt="Interface 3" title="">
+                <div class="carousel original-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/scprof0.jpg" alt="Interface 0" data-index="0">
+                            <div class="caption">SCProf overrides all fixed-point operations within the SystemC library. After running a simulation with representative data, you can use the viewer to analyze what happened inside the application. The tool provides tips, explaining what needs to be done to improve bit utilization and reduce hardware requirements. The project was used by IdeaIP to substantially improve their DSP hardware.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/scprof1.jpg" alt="Interface 1" data-index="1">
+                            <div class="caption"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/scprof2.jpg" alt="Interface 2" data-index="2">
+                            <div class="caption"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/scprof3.jpg" alt="Interface 3" data-index="3">
+                            <div class="caption"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="prevBtn">&#8592;</button>
+                        <button class="nextBtn">&#8594;</button>
+                    </div>
                 </div>
             </div>
 
@@ -172,14 +192,28 @@
                     <li>NativeKit is a framework that implements a minimal POSIX interface, allowing developers to recompile their Linux user-level applications to run on bare metal (without an operating system). It uses GRUB to bootload an exokernel <a href="https://github.com/lmcad-unicamp/NativeKit/blob/master/doc/apresentacao.pdf">integrated into the application's static binary</a>, reducing system requirements and improving the performance of binary translators.</li>
                     <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly x86/AMD64, GRUB, POSIX, Drivers, Kernel development</span></li>
                 </ul>
-
-                <div class="lightbox">
-                    <a href="https://www.youtube.com/embed/jj--cF3suvU" target="_blank" rel="noopener" class="video-thumbnail">
-                        <img width=300 height=270 src="assets/images/full/nativekit2.jpg" title="NativeKit running a NES emulator without an Operating System" alt="Watch on YouTube">
-                        <span class="play-button">&#9658;</span>
-                    </a>
-                    <img src="assets/images/mini/nativekit0.jpg" alt="Interface 1" title="NativeKit is an exokernel embedded in the application code, allowing a binary to execute on bare metal without an operating system.">
-                    <img src="assets/images/mini/nativekit1.jpg" alt="Interface 2" title="The API is fully object-oriented. In this example, I built a kernel with UART support to run an 8086 emulator. The image on the right shows FreeDOS running on tiny8086 emulator, operating on bare metal using the NativeKit API.">
+                <div class="carousel original-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-item">
+                            <a href="https://www.youtube.com/embed/jj--cF3suvU" target="_blank" rel="noopener" class="video-thumbnail">
+                                <img width=300 height=270 src="assets/images/full/nativekit2.jpg" title="" alt="Watch on YouTube">
+                                <span class="play-button">&#9658;</span>
+                            </a>
+                            <div class="caption">NativeKit running a NES emulator without an Operating System.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/nativekit0.jpg" alt="Interface 0" data-index="0">
+                            <div class="caption">NativeKit is an exokernel embedded in the application code, allowing a binary to execute on bare metal without an operating system.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/nativekit1.jpg" alt="Interface 1" data-index="1">
+                            <div class="caption">The API is fully object-oriented. In this example, I built a kernel with UART support to run an 8086 emulator. The image on the right shows FreeDOS running on tiny8086 emulator, operating on bare metal using the NativeKit API.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="prevBtn">&#8592;</button>
+                        <button class="nextBtn">&#8594;</button>
+                    </div>
                 </div>
             </div>
 
@@ -189,22 +223,53 @@
                     <li>Neutrino OS is a fully capable operating system developed in x86 assembly. I built everything from scratch using old 486DX manuals as references. I designed the entire software stack for this project, including the bootloader, firmware, shell, graphical interface, applications, filesystem, preemptive scheduler, memory management, event subsystem, APIs, threads, and several drivers for 2D/3D accelerated video, hard drives (PATA/SATA), CD-ROM (PATAPI), keyboard, and mouse.</li>
                     <li><span class="tech">Relevant Technologies:</span> <span class="tags">Linux, C, C++, Assembly x86, Drivers, Kernel development</span></li>
                 </ul>
-                <div class="lightbox">
-                    <img src="assets/images/mini/neutrino0.png" alt="Interface 1" title="NeutrinoOS has a graphical interface. I have designed a VESA drivers compatible with several video cards.">
-                    <img src="assets/images/mini/neutrino1.png" alt="Interface 2" title="The shell includes a terminal that allows interaction with the file system, enabling users to load applications and navigate through directories.">
-                    <img src="assets/images/mini/neutrino2.png" alt="Interface 3" title="The operating system supports time-sharing, efficient memory allocation, and protected addressing.">
-                    <img src="assets/images/mini/neutrino3.png" alt="Interface 4" title="It is a toy project, but it provides a full syscall interface and event-oriented APIs for development.">
+                <div class="carousel original-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/neutrino0.png" alt="Interface 1" data-index="0">
+                            <div class="caption">NeutrinoOS has a graphical interface. I have designed a VESA drivers compatible with several video cards.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/neutrino1.png" alt="Interface 2" data-index="1">
+                            <div class="caption">The shell includes a terminal that allows interaction with the file system, enabling users to load applications and navigate through directories.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/neutrino2.png" alt="Interface 3" data-index="2">
+                            <div class="caption">The operating system supports time-sharing, efficient memory allocation, and protected addressing.</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/neutrino3.png" alt="Interface 4" data-index="3">
+                            <div class="caption">It is a toy project, but it provides a full syscall interface and event-oriented APIs for development.</div>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="prevBtn">&#8592;</button>
+                        <button class="nextBtn">&#8594;</button>
+                    </div>
                 </div>
             </div>
+
             <div class="entry">
                 <h3>Oxygen.js - A Javascript Object Oriented Graphic Engine<a href="https://github.com/AlissonLinhares/Oxygen">&lt;code&gt;</a></h3>
                 <ul>
                     <li>Oxygen is an old object-oriented isometric HTML5 game engine created by my brother and me, just for fun, in our free time. The engine is highly portable and relatively fast for a JavaScript application. It runs entirely on Canvas2D and includes all the common features found in modern game engines, such as 3D transformations, cameras, collision detection, render indexing, asset loaders, and more. It is capable of running on almost all current browsers and input devices.</a>
                     <li><span class="tech">Relevant Technologies:</span> <span class="tags">JavaScript, WebGL, CSS, Canvas2D, Computer Graphics, Object-Oriented Programming</span></li>
                 </ul>
-                <div class="lightbox">
-                    <img src="assets/images/mini/oxygen1.jpg" alt="Interface 1" title="An isometric level with Z-index calculation and physics support">
-                    <img src="assets/images/mini/oxygen2.jpg" alt="Interface 2" title="The engine is highly optimized; it can handle thousands of animated elements running in the background">
+                <div class="carousel original-carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/oxygen1.jpg" alt="Interface 1" data-index="0">
+                            <div class="caption">An isometric level with Z-index calculation and physics support</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/mini/oxygen2.jpg" alt="Interface 2" data-index="1">
+                            <div class="caption">The engine is highly optimized; it can handle thousands of animated elements running in the background</div>
+                        </div>
+                    </div>
+                    <div class="carousel-buttons">
+                        <button class="prevBtn">&#8592;</button>
+                        <button class="nextBtn">&#8594;</button>
+                    </div>
                 </div>
             </div>
             <div class="entry">
@@ -233,8 +298,8 @@
         <section>
             <h2>Languages</h2>
             <ul>
-                <li><strong>Portuguese</strong> - Native proficiency</li>
-                <li><strong>English</strong> - Professional proficiency</li>
+                <li><strong>Portuguese</strong> - Native</li>
+                <li><strong>English</strong> - Advanced</li>
             </ul>
         </section>
 
@@ -245,7 +310,7 @@
     </div>
 
     <script src="js/timeline.js"></script>
-    <script src="js/lightbox.js"></script>
     <script src="js/scroll-animations.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 </html>
