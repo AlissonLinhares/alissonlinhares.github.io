@@ -11,19 +11,21 @@
     cursor: pointer;
 }
 
-.carousel-image {
-    cursor: pointer;
-}
-
 .carousel {
     position: relative;
-    width: 800px;
-    height: 250px;
-    margin: 0rem auto;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    aspect-ratio: 8 / 2.5;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     background: black;
+}
+
+.carousel-image {
+    cursor: pointer;
 }
 
 .carousel-images {
@@ -33,8 +35,8 @@
 }
 
 .carousel-item {
-    width: 800px;
-    height: 240px;
+    width: 100%;
+    height: 100%;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
@@ -47,8 +49,8 @@
 
 .carousel-item img {
     width: 100%;
-    height: 180px;
-    padding-top: 10px;
+    height: auto;
+    max-height: 180px;
     object-fit: contain;
     background-color: black;
     cursor: pointer;

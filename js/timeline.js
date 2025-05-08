@@ -52,7 +52,7 @@ function renderChart() {
 
     legendItems.forEach((item, index) => {
         const legendX = width * 0.1 + index * (width * 0.25);
-        
+
         // Add colored circle
         const circle = createSVGElement("circle", {
             cx: legendX,
@@ -105,10 +105,25 @@ function renderChart() {
 
         const handleMouseEnter = (e) => {
             tooltip.innerHTML = branch.description;
-            const containerRect = container.getBoundingClientRect();
-            tooltip.style.left = `${e.clientX - containerRect.left + 10}px`;
-            tooltip.style.top = `${e.clientY - containerRect.top - 20}px`;
             tooltip.style.display = "block";
+
+            const containerRect = container.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+
+            let left = e.clientX - containerRect.left;
+            let top = e.clientY - containerRect.top;
+            let centerX = tooltipRect.width / 2;
+
+            if (left + tooltipRect.width > containerRect.width)
+                left = containerRect.width - centerX;
+            else if (left - centerX < 0)
+                left = centerX;
+
+            if (top + tooltipRect.height/2 > containerRect.height)
+                top = containerRect.height - tooltipRect.height/2;
+
+            tooltip.style.left = `${left}px`;
+            tooltip.style.top = `${top}px`;
 
             drawPath.setAttribute("stroke", "#ffff00");
             startDot.setAttribute("fill", "#ffff00");
@@ -154,21 +169,21 @@ function renderChart() {
 }
 
 // Add your data points
-addPoint(2005, 2026, "My career", "#000000", 2005, 2026);
-addPoint(2005, 2026, "LDG, Sergipe, Brazil<br>Game Programing Research (Part Time)", "#404040", 2008.5, 2009, 4);
-addPoint(2005, 2026, "CEFET, Sergipe, Brazil<br>Technical education, electronics", "#964B00", 2007, 2009, -2);
-addPoint(2005, 2026, "Lumen Games, Sergipe, Brazil<br>Game Developer", "#808080", 2009, 2011, -2);
-addPoint(2005, 2026, "University Tirandentes (UNIT), Sergipe, Brazil<br>Bachelor's degree, Computer Science", "#964B00", 2007, 2011, 2);
-addPoint(2005, 2026, "Universidade Federal de Sergipe (UFS)<br>Sergipe, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2011, 2013, 2);
-addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>Master's degree, Computer Science", "#964B00", 2013, 2015, 2);
-addPoint(2005, 2026, "IBM, São Paulo, Brazil<br>Linux Technology Center<br>Linux Software Engineer (Hybrid)", "#808080", 2015, 2017, 2);
-addPoint(2005, 2026, "Unicamp, São Paulo, Brazil<br>PhD, Computer Science<br>(Paused) All credit requirements completed", "#964B00", 2017, 2020, 2);
-addPoint(2005, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Research (Part Time)", "#404040", 2019, 2020, 4);
-addPoint(2005, 2026, "Pontifícia Universidade Católica (PUC)<br>São Paulo, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2021, 2022, 2);
-addPoint(2005, 2026, "AXNTEK, Sergipe, Brazil<br>Lead Game Programmer", "#808080", 2020, 2022, 4);
-addPoint(2005, 2026, "DELL Technologies, São Paulo, Brazil<br>Senior Engineer", "#808080", 2022, 2025, 2);
-addPoint(2005, 2026, "Covid19, 2020 Lockdown", "#FF0000", 2019, 2022, -6);
-addPoint(2005, 2026, "Today", "#000000", 2025, 2026, 0);
+addPoint(2006, 2026, "My career", "#000000", 2006, 2026);
+addPoint(2006, 2026, "LDG, Sergipe, Brazil<br>Game Programing Research (Part Time)", "#404040", 2008.5, 2009, 4);
+addPoint(2006, 2026, "CEFET, Sergipe, Brazil<br>Technical education, electronics", "#964B00", 2007, 2009, -2);
+addPoint(2006, 2026, "Lumen Games, Sergipe, Brazil<br>Game Developer", "#808080", 2009, 2011, -2);
+addPoint(2006, 2026, "University Tirandentes (UNIT), Sergipe, Brazil<br>Bachelor's degree, Computer Science", "#964B00", 2007, 2011, 2);
+addPoint(2006, 2026, "Universidade Federal de Sergipe (UFS)<br>Sergipe, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2011, 2013, 2);
+addPoint(2006, 2026, "Unicamp, São Paulo, Brazil<br>Master's degree, Computer Science", "#964B00", 2013, 2015, 2);
+addPoint(2006, 2026, "IBM, São Paulo, Brazil<br>Linux Technology Center<br>Linux Software Engineer (Hybrid)", "#808080", 2015, 2017, 2);
+addPoint(2006, 2026, "Unicamp, São Paulo, Brazil<br>PhD, Computer Science<br>(Paused) All credit requirements completed", "#964B00", 2017, 2020, 2);
+addPoint(2006, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Research (Part Time)", "#404040", 2019, 2020, 4);
+addPoint(2006, 2026, "Pontifícia Universidade Católica (PUC)<br>São Paulo, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2021, 2022, 2);
+addPoint(2006, 2026, "AXNTEK, Sergipe, Brazil<br>Lead Game Programmer", "#808080", 2020, 2022, 4);
+addPoint(2006, 2026, "DELL Technologies, São Paulo, Brazil<br>Senior Engineer", "#808080", 2022, 2025, 2);
+addPoint(2006, 2026, "Covid19, 2020 Lockdown", "#FF0000", 2019, 2022, -6);
+addPoint(2006, 2026, "Today", "#000000", 2025, 2026, 0);
 
 renderChart();
 window.addEventListener("resize", renderChart);

@@ -1,13 +1,16 @@
 .timeline-chart-container {
     font-family: 'Inter', sans-serif;
-    margin: 0;
     padding: 0;
     user-select: none;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .timeline-chart-card {
     background: #fff;
-    padding: 20px;
+    width: 100%;
+    padding: 1rem;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
     position: relative;
@@ -28,5 +31,5 @@
 
 svg {
     width: 100%;
-    height: auto;
+    height: 240px;
 }
