@@ -182,7 +182,7 @@ addPoint(2006, 2026, "IdeaIP, São Paulo, Brazil<br>Computer Architecture Resear
 addPoint(2006, 2026, "Pontifícia Universidade Católica (PUC)<br>São Paulo, Brazil<br>Undergraduate Professor (Full Time)", "#404040", 2021, 2022, 2);
 addPoint(2006, 2026, "AXNTEK, Sergipe, Brazil<br>Lead Game Programmer", "#808080", 2020, 2022, 4);
 addPoint(2006, 2026, "DELL Technologies, São Paulo, Brazil<br>Senior Engineer", "#808080", 2022, 2025, 2);
-addPoint(2006, 2026, "Covid19, 2020 Lockdown", "#FF0000", 2019, 2022, -6);
+addPoint(2006, 2026, "Covid19, 2020 Lockdown", "#FF0000", 2019, 2022, -2);
 addPoint(2006, 2026, "Today", "#000000", 2025, 2026, 0);
 
 renderChart();
