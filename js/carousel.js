@@ -5,6 +5,9 @@ function setupCarousel(carousel) {
     const nextBtn = carousel.querySelector('.nextBtn');
     let index = 0;
 
+    if (!prevBtn || !nextBtn)
+        return
+
     function getItemWidth() {
         return carousel.offsetWidth;
     }
