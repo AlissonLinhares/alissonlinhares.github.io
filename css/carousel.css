@@ -125,3 +125,23 @@
     text-align: center;
     margin-top: 10px;
 }
+
+@media (max-width: 640px) {
+    .carousel {
+        aspect-ratio: 4 / 3;
+    }
+
+    .carousel-item img {
+        max-height: 140px;
+    }
+
+    .caption {
+        font-size: 0.75rem;
+        max-height: 70px;
+    }
+
+    .carousel-buttons button {
+        font-size: 1rem;
+        padding: 0.3em 0.5em;
+    }
+}
